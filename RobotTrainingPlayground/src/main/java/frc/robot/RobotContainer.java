@@ -6,6 +6,7 @@ package frc.robot;
 
 import frc.robot.Constants.OperatorConstants;
 import frc.robot.commands.Autos;
+import frc.robot.commands.ElevatorExtend;
 import frc.robot.commands.ExampleCommand;
 import frc.robot.commands.Turn;
 import frc.robot.subsystems.ExampleSubsystem;
@@ -27,6 +28,8 @@ public class RobotContainer {
 
   private final Turn turn180 = new Turn(Math.PI);
   private final Turn turn90 = new Turn(Math.PI / 2);
+  private final ElevatorExtend extendElevator = new ElevatorExtend(0.01);
+  private final ElevatorExtend contractElevator = new ElevatorExtend(-0.01);
 
   private final CommandXboxController controller = new CommandXboxController(0);
 
@@ -37,6 +40,10 @@ public class RobotContainer {
   private void configureBindings() {
     controller.a().whileTrue(turn180);
     controller.b().whileTrue(turn90);
+    controller.y().whileTrue(extendElevator);
+    controller.x().whileTrue(contractElevator);
+
+
 
   }
 
